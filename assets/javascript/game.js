@@ -11,3 +11,22 @@ for (var i = 0; i <word.length; i++) {
 }
 var remainingLetters = word.length; 
 
+
+
+
+// HERE IS WHERE THE GAME CODE GOES
+//PSEUDO CODE
+
+
+// Userinput letters on key up to be saved as a variable array 'lettersGuessed'
+
+// if (x === letter in word)
+// print the letter
+
+// if (x !== letter in word && has not been used){
+//     nchances - 1
+// }
+
+// if (remainingLetters === 0) {
+//     print "You're in!!!"
+// }
