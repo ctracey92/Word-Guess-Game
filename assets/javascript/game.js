@@ -1,9 +1,6 @@
 //Array of words to guess
 var secretCodes = ["hacker", "blackhat","encrypt", "firewall", "password"]
 
-//Randomly select word
-var word = secretCodes[Math.floor(math.random()*words.length)]
-
 //Creates the place holder for unguessed letters
 var answerBox = [];
 for (var i = 0; i <word.length; i++) {
@@ -11,14 +8,32 @@ for (var i = 0; i <word.length; i++) {
 }
 var remainingLetters = word.length; 
 
-
-
-
 // HERE IS WHERE THE GAME CODE GOES
+
+while (remainingLetters > 0){
+    //creates the onkeyup event and logs it
+    document.onkeyup = function(event) {
+    var userGuess = event.key.toLocaleLowerCase;
+    }
+
+    //creates an array to store user guesses
+    var userGuesses = [];
+    document.onkeyup = function (e) {
+        var keyPress;
+        if (typeof event !== 'undefined') {
+            keyPress = event.keyCode;
+        }
+        else if (e) {
+            keyPress = e.which;
+        }
+        userGuesses(String.fromCharCode(keyPress));
+        return false;
+    };
+    
+}
 //PSEUDO CODE
 
 
-// Userinput letters on key up to be saved as a variable array 'lettersGuessed'
 
 // if (x === letter in word)
 // print the letter
@@ -30,3 +45,12 @@ var remainingLetters = word.length;
 // if (remainingLetters === 0) {
 //     print "You're in!!!"
 // }
+
+//Randomly select word (needs to be on game start)
+var word = secretCodes[Math.floor(math.random()*words.length)]
+
+
+
+
+
+    
