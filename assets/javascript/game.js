@@ -26,49 +26,70 @@ console.log (answerBox);
 window.onload =function() {
     docUnderScores();
     function docUnderScores() {
-        document.getElementById("passwordBox").innerHTML =answerBox
+        document.getElementById("passwordBox").innerHTML = "Password: " + answerBox
     }
     docWins();
     function docWins() {
-        document.getElementById("wins").innerHTML=wins
+        document.getElementById("wins").innerHTML= "Wins: " + wins
     }
-
 }
 
-    //creates the onkeyup event and logs it (currently is is only local and not global)
+function letterInWord(letter) {
+    var positions = new Array();
+    for (i = 0; i < currentWord.length; i++) {
+        if (currentWord[i] === letter)
+        positions.push(i);
+    }
+    return positions;
+}
 
-    var userInput = document.onkeyup = function(event) {
-        console.log(event.key) ;
-        }
+function lettersToGuess() {
+    var toGuess = 0;
+    for (i in answerBox) {
+        if (answerBox[i] === "_")
+        toGuess++;
+    }
+    return toGuess;
+}
+
+//creates an array to store user guesses
+var userGuesses = [];
+document.onkeyup = function (e) {
+    var keyPress = e.key;
+    userGuesses.push(keyPress);
+    document.getElementById("guesses").innerHTML ="Letters Guessed So Far..." + userGuesses;
+    console.log(userGuesses);
+};
 
 
-    //creates an array to store user guesses
-    var userGuesses = [];
-    document.onkeyup = function (e) {
-        var keyPress = e.key;
-        userGuesses.push(keyPress);
-        console.log(userGuesses);
-    };
+   
 
 
-    
 
-    // console.log(userGuesses);
-    
-    // for (var answerUpdate = 0; answerUpdate < word.length; answerUpdate++) {
-    //     //If the user gets a letter right it prints the letter
-    //     if (word[answerUpdate] === userInput) {
-    //         answerBox[answerUpdate] = userInput;
-    //         remainingLetters--;
-    //     }
+
+
+
+
+
+
+//    //creates the onkeyup event and logs it (currently is is only local and not global)
+//     var userInput = document.onkeyup = function(event) {
+//         console.log(event.key);
+//         }  
+//     for (var answerUpdate = 0; answerUpdate < word.length; answerUpdate++) {
+//         //If the user gets a letter right it prints the letter
+//         if (word[answerUpdate] === userInput) {
+//             answerBox[answerUpdate] = userInput;
+//             remainingLetters--;
+//         }
         
-    //     //If the user is wrong subtract one guess
-    //     else {
-    //         guessesLeft--;
-    //     }
-    // }
+//     //     //If the user is wrong subtract one guess
+//     //     else {
+//     //         guessesLeft--;
+//     //     }
+//     // }
 
-    // indexOf
+//     // indexOf
    
 
 // //PSEUDO CODE
@@ -84,11 +105,4 @@ window.onload =function() {
 // // if (remainingLetters === 0) {
 // //     print "You're in!!!"
 // // }
-
-
-
-
-
-
-
-    
+    }
