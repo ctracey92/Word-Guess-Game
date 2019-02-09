@@ -35,12 +35,6 @@ console.log (answerBox);
     var userGuesses = [];
     document.onkeyup = function (e) {
         var keyPress = e.key;
-        // if (typeof event !== 'undefined') {
-        //     keyPress = event.keyCode;
-        // }
-        // else if (e) {
-        //     keyPress = e.which;
-        // }
         userGuesses.push(keyPress);
         console.log(userGuesses);
     };
@@ -60,7 +54,7 @@ console.log (answerBox);
         }
     }
 
-    indexOf
+    // indexOf
    
 
 // //PSEUDO CODE
