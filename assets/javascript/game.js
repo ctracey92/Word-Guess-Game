@@ -1,19 +1,27 @@
 
-console.log(1)
 //Array of words to guess
 var secretCodes = ["hacker", "blackhat","encrypt", "firewall", "password"]
 
 //Randomly select word (needs to be on game start)
 var word = secretCodes[Math.floor(Math.random()*secretCodes.length)]
 
-// HERE IS WHERE THE GAME CODE GOES
+//creates the onkeyup event and logs it (currently is is only local and not global)
 
-while (remainingLetters > 0){
-    //creates the onkeyup event and logs it
-    document.onkeyup = function(event) {
+var userInput = document.onkeyup = function(event) {
     var userGuess = event.key.toLocaleLowerCase;
     }
 
+//Creates the place holder for unguessed letters
+var answerBox = [];
+for (var i = 0; i < word.length; i++) {
+answerBox[i] = "_";
+}
+var remainingLetters = word.length; 
+
+    
+// HERE IS WHERE THE GAME CODE GOES
+
+while (remainingLetters > 0){
     //creates an array to store user guesses
     var userGuesses = [];
     document.onkeyup = function (e) {
@@ -27,20 +35,16 @@ while (remainingLetters > 0){
         userGuesses(String.fromCharCode(keyPress));
         return false;
     };
-
-    //Creates the place holder for unguessed letters
-    var answerBox = [];
-    for (var i = 0; i < word.length; i++) {
-    answerBox[i] = "_";
-    }
-    var remainingLetters = word.length; 
-
+    if ( userInput !== userGuesses) {
         for (var answerUpdate = 0; answerUpdate < word.length; answerUpdate++){
-            if (word[answerUpdate] ===guess){
-                answerBox[answerUpdate] = guess;
+            if (word[answerUpdate] === userInput){
+                answerBox[answerUpdate] = userInput;
                 remainingLetters--;
             }
         }
+    }
+
+    
     
 
     
