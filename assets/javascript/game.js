@@ -1,12 +1,10 @@
+
+console.log(1)
 //Array of words to guess
 var secretCodes = ["hacker", "blackhat","encrypt", "firewall", "password"]
 
-//Creates the place holder for unguessed letters
-var answerBox = [];
-for (var i = 0; i <word.length; i++) {
-    answerBox[i] = "_";
-}
-var remainingLetters = word.length; 
+//Randomly select word (needs to be on game start)
+var word = secretCodes[Math.floor(Math.random()*secretCodes.length)]
 
 // HERE IS WHERE THE GAME CODE GOES
 
@@ -29,6 +27,22 @@ while (remainingLetters > 0){
         userGuesses(String.fromCharCode(keyPress));
         return false;
     };
+
+    //Creates the place holder for unguessed letters
+    var answerBox = [];
+    for (var i = 0; i < word.length; i++) {
+    answerBox[i] = "_";
+    }
+    var remainingLetters = word.length; 
+
+        for (var answerUpdate = 0; answerUpdate < word.length; answerUpdate++){
+            if (word[answerUpdate] ===guess){
+                answerBox[answerUpdate] = guess;
+                remainingLetters--;
+            }
+        }
+    
+
     
 }
 //PSEUDO CODE
@@ -46,8 +60,7 @@ while (remainingLetters > 0){
 //     print "You're in!!!"
 // }
 
-//Randomly select word (needs to be on game start)
-var word = secretCodes[Math.floor(math.random()*words.length)]
+
 
 
 
