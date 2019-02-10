@@ -18,10 +18,14 @@ var secretCodes = ["hacker", "blackhat","encrypt", "firewall", "password"]
 for (var i = 0; i < word.length; i++) {
 answerBox.push("_");
 }
-var remainingLetters = word.length; 
+var remainingLetters = answerBox.indexOf("_") 
 console.log (answerBox);
  // HERE IS WHERE THE GAME CODE GOES
 
+ //Displays current wins
+ function docWins() {
+    document.getElementById("wins").innerHTML= "Wins: " + wins
+}
 //On page load the mystery word is displayed as a series of underscores
 window.onload =function() {
     docUnderScores();
@@ -29,15 +33,13 @@ window.onload =function() {
         document.getElementById("passwordBox").innerHTML = "Password: " + answerBox
     }
     docWins();
-    function docWins() {
-        document.getElementById("wins").innerHTML= "Wins: " + wins
-    }
     docGuessesLeft();
     function docGuessesLeft() {
         document.getElementById("chancesLeft").innerHTML= "Guesses Left: " + chancesLeft
     }
 }
 
+//checks to see if the letter is in word
 function letterInWord(letter) {
     var positions = new Array();
     for (i = 0; i < word.length; i++) {
@@ -47,14 +49,15 @@ function letterInWord(letter) {
     return positions;
 }
 
-function lettersToGuess() {
-    var toGuess = 0;
-    for (i in word) {
-        if (word[i] === "_")
-        toGuess++;
+//Checks to see if the user won or not
+function checkForWin() {
+    if(answerBox.indexOf("_") === -1){
+        wins++;
+        alert("You're In!");
+
     }
-    return toGuess;
 }
+
 
 //creates an array to store user guesses
 var userGuesses = [];
@@ -70,7 +73,10 @@ document.onkeyup = function (e) {
         document.getElementById("passwordBox").innerHTML = answerBox.join(" ");
     }
     progress();
+    checkForWin();
+    docWins();
     }
+
     //If the word was not in it put the letter in the letters guessed box
     else {
         lettersGuessed();
@@ -78,15 +84,21 @@ document.onkeyup = function (e) {
             document.getElementById("guesses").innerHTML += guessed + " ";
             chancesLeft--;
             document.getElementById("chancesLeft").innerHTML = "Chances Left "+ chancesLeft;
+            //Alerts lose message if chances are equal or less than 0.
+            if (chancesLeft <= 0){
+                alert("You lose the FBI has been notified of your activity!");
+            }
+            lettersToGuess();
         }
         
     }
-}
     
-// if (lettersToGuess() === 0) {
-//     guessesLeft = 10;
+   
 
-// }
+}
+
+
+
 
 
 
