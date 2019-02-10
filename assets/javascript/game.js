@@ -2,7 +2,7 @@
 var wins = 0;
 
 //variable for chances left
-var guessesLeft = 10;
+var chancesLeft = 10;
 
 //variable for letter place holder array
 var answerBox = [];
@@ -32,12 +32,16 @@ window.onload =function() {
     function docWins() {
         document.getElementById("wins").innerHTML= "Wins: " + wins
     }
+    docGuessesLeft();
+    function docGuessesLeft() {
+        document.getElementById("chancesLeft").innerHTML= "Guesses Left: " + chancesLeft
+    }
 }
 
 function letterInWord(letter) {
     var positions = new Array();
-    for (i = 0; i < currentWord.length; i++) {
-        if (currentWord[i] === letter)
+    for (i = 0; i < word.length; i++) {
+        if (word[i] === letter)
         positions.push(i);
     }
     return positions;
@@ -45,8 +49,8 @@ function letterInWord(letter) {
 
 function lettersToGuess() {
     var toGuess = 0;
-    for (i in answerBox) {
-        if (answerBox[i] === "_")
+    for (i in word) {
+        if (word[i] === "_")
         toGuess++;
     }
     return toGuess;
@@ -56,53 +60,44 @@ function lettersToGuess() {
 var userGuesses = [];
 document.onkeyup = function (e) {
     var keyPress = e.key;
-    userGuesses.push(keyPress);
-    document.getElementById("guesses").innerHTML ="Letters Guessed So Far..." + userGuesses;
-    console.log(userGuesses);
-};
-
-
-   
-
-
-
-
-
-
-
-
-
-//    //creates the onkeyup event and logs it (currently is is only local and not global)
-//     var userInput = document.onkeyup = function(event) {
-//         console.log(event.key);
-//         }  
-//     for (var answerUpdate = 0; answerUpdate < word.length; answerUpdate++) {
-//         //If the user gets a letter right it prints the letter
-//         if (word[answerUpdate] === userInput) {
-//             answerBox[answerUpdate] = userInput;
-//             remainingLetters--;
-//         }
-        
-//     //     //If the user is wrong subtract one guess
-//     //     else {
-//     //         guessesLeft--;
-//     //     }
-//     // }
-
-//     // indexOf
-   
-
-// //PSEUDO CODE
-
-
-// // if (x === letter in word)
-// // print the letter
-
-// // if (x !== letter in word && has not been used){
-// //     nchances - 1
-// // }
-
-// // if (remainingLetters === 0) {
-// //     print "You're in!!!"
-// // }
+    var guessed = keyPress.toLowerCase();
+    var positions = letterInWord(guessed);
+    //if letter is correct, print it instead of filler text
+    if (positions.length){
+        for (i = 0; i < positions.length; i++){
+            answerBox[positions[i]] = guessed;
+        }function progress(){
+        document.getElementById("passwordBox").innerHTML = answerBox.join(" ");
     }
+    progress();
+    }
+    //If the word was not in it put the letter in the letters guessed box
+    else {
+        lettersGuessed();
+        function lettersGuessed() {
+            document.getElementById("guesses").innerHTML += guessed + " ";
+            chancesLeft--;
+            document.getElementById("chancesLeft").innerHTML = "Chances Left "+ chancesLeft;
+        }
+        
+    }
+}
+    
+// if (lettersToGuess() === 0) {
+//     guessesLeft = 10;
+
+// }
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
