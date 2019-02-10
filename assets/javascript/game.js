@@ -15,12 +15,17 @@ var secretCodes = ["hacker", "blackhat","encrypt", "firewall", "password"]
     console.log (word);  
 
 //Creates the place holder for unguessed letters
+function createAnswerBox(){
+    for (var i = 0; i < word.length; i++) {
+answerBox.push("_");
+}
+}
+
 for (var i = 0; i < word.length; i++) {
 answerBox.push("_");
 }
 var remainingLetters = answerBox.indexOf("_") 
 console.log (answerBox);
- // HERE IS WHERE THE GAME CODE GOES
 
  //Displays current wins
  function docWins() {
@@ -30,7 +35,7 @@ console.log (answerBox);
 window.onload =function() {
     docUnderScores();
     function docUnderScores() {
-        document.getElementById("passwordBox").innerHTML = "Password: " + answerBox
+        document.getElementById("passwordBox").innerHTML = answerBox
     }
     docWins();
     docGuessesLeft();
@@ -54,10 +59,34 @@ function checkForWin() {
     if(answerBox.indexOf("_") === -1){
         wins++;
         alert("You're In!");
-
+        resetGame();
     }
+    
 }
 
+//Reset Function
+function resetGame(){
+    //Reset chances
+    chancesLeft = 10;
+    //Pick a new word
+    word = secretCodes[Math.floor(Math.random()*secretCodes.length)]
+    console.log (word);
+    //reset arrays
+    answerBox = [];
+    i = 0;
+    //Build guessing box
+    for (var i = 0; i < word.length; i++) {
+        answerBox.push("_");
+        }
+        var remainingLetters = answerBox.indexOf("_") 
+        console.log (answerBox);
+    //Resets Letters Guessed
+    document.getElementById("guesses").innerHTML = ""
+    //Reset Password box
+    document.getElementById("passwordBox").innerHTML = answerBox.join(" ");
+    
+
+}
 
 //creates an array to store user guesses
 var userGuesses = [];
@@ -77,23 +106,23 @@ document.onkeyup = function (e) {
     docWins();
     }
 
-    //If the word was not in it put the letter in the letters guessed box
-    else {
+//If the word was not in it put the letter in the letters guessed box
+else {
         lettersGuessed();
         function lettersGuessed() {
             document.getElementById("guesses").innerHTML += guessed + " ";
             chancesLeft--;
             document.getElementById("chancesLeft").innerHTML = "Chances Left "+ chancesLeft;
+
             //Alerts lose message if chances are equal or less than 0.
             if (chancesLeft <= 0){
                 alert("You lose the FBI has been notified of your activity!");
+                resetGame();
             }
-            lettersToGuess();
         }
         
     }
-    
-   
+    checkForWin();
 
 }
 
