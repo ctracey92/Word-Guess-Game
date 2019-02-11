@@ -8,7 +8,7 @@ var chancesLeft = 10;
 var answerBox = [];
 
 //Array of words to guess
-var secretCodes = ["hacker", "blackhat","encrypt", "firewall", "password"]
+var secretCodes = ["hacker", "blackhat","encrypt", "firewall", "password", "qwerty", "iloveyou", "qwertyuiop","monkey","dragon","sunshine","princess", "admin", "welcome", "football", "donald","charlie"]
 
 //Randomly select word (needs to be on game start)
     var word = secretCodes[Math.floor(Math.random()*secretCodes.length)]
@@ -17,8 +17,8 @@ var secretCodes = ["hacker", "blackhat","encrypt", "firewall", "password"]
 //Creates the place holder for unguessed letters
 function createAnswerBox(){
     for (var i = 0; i < word.length; i++) {
-answerBox.push("_");
-}
+        answerBox.push("_");
+    }
 }
 
 for (var i = 0; i < word.length; i++) {
@@ -84,8 +84,6 @@ function resetGame(){
     document.getElementById("guesses").innerHTML = ""
     //Reset Password box
     document.getElementById("passwordBox").innerHTML = answerBox.join(" ");
-    
-
 }
 
 //creates an array to store user guesses
@@ -123,7 +121,6 @@ else {
         
     }
     checkForWin();
-
 }
 
 
