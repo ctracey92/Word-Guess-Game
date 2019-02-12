@@ -1,3 +1,4 @@
+
 //varaibles for wins/losses
 var wins = 0;
 
@@ -76,6 +77,7 @@ function resetGame(){
     console.log (word);
     //reset arrays
     answerBox = [];
+    alreadyGuessed =[];
     i = 0;
     //Build guessing box
     for (var i = 0; i < word.length; i++) {
@@ -98,32 +100,37 @@ document.onkeyup = function (e) {
     if (positions.length){
         for (i = 0; i < positions.length; i++){
             answerBox[positions[i]] = guessed;
-        }function progress(){
-        document.getElementById("passwordBox").innerHTML = answerBox.join(" ");
-    }
+        }
+        function progress(){
+            document.getElementById("passwordBox").innerHTML = answerBox.join(" ");
+        }
     progress();
     checkForWin();
     docWins();
     }
 
-//If the word was not in it put the letter in the letters guessed box
+//If the word was not in it put the letter in the letters guessed box, and remove a chance
     else {
         lettersGuessed();
-        function lettersGuessed() {
-            document.getElementById("guesses").innerHTML += guessed + " ";
-            chancesLeft--;
-            document.getElementById("chancesLeft").innerHTML = "Chances Left "+ chancesLeft;
 
-            //Alerts lose message if chances are equal or less than 0.
-            if (chancesLeft <= 0){
-                alert("You lose the FBI has been notified of your activity!");
-                resetGame();
+        function lettersGuessed() {
+            //if the letter is incorrect and has not been guessed before remove a chance, otherwise do nothing.
+            if (alreadyGuessed.indexOf(guessed) == -1){
+                alreadyGuessed.push(guessed);
+                document.getElementById("guesses").innerHTML += guessed + " ";
+                chancesLeft--;
+                document.getElementById("chancesLeft").innerHTML = "Chances Left "+ chancesLeft;
+                //Alerts lose message if chances are equal or less than 0.
+                if (chancesLeft <= 0){
+                    alert("You lose the FBI has been notified of your activity!");
+                    resetGame();
+                } 
             }
         }
-        
-    }
-    checkForWin();
+         checkForWin();
+    }   
 }
+
 
 
 
