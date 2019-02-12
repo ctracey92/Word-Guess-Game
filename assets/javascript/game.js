@@ -7,6 +7,9 @@ var chancesLeft = 10;
 //variable for letter place holder array
 var answerBox = [];
 
+//varaible for guessed letters:
+var alreadyGuessed = [];
+
 //Array of words to guess
 var secretCodes = ["hacker", "blackhat","encrypt", "firewall", "password", "qwerty", "iloveyou", "qwertyuiop","monkey","dragon","sunshine","princess", "admin", "welcome", "football", "donald","charlie"]
 
@@ -87,7 +90,6 @@ function resetGame(){
 }
 
 //creates an array to store user guesses
-var userGuesses = [];
 document.onkeyup = function (e) {
     var keyPress = e.key;
     var guessed = keyPress.toLowerCase();
@@ -105,7 +107,7 @@ document.onkeyup = function (e) {
     }
 
 //If the word was not in it put the letter in the letters guessed box
-else {
+    else {
         lettersGuessed();
         function lettersGuessed() {
             document.getElementById("guesses").innerHTML += guessed + " ";
