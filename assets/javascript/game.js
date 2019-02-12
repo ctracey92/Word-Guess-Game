@@ -20,14 +20,14 @@ var secretCodes = ["hacker", "blackhat","encrypt", "firewall", "password", "qwer
 //Creates the place holder for unguessed letters
 function createAnswerBox(){
     for (var i = 0; i < word.length; i++) {
-        answerBox.push("_");
+        answerBox.push("*");
     }
 }
 
 for (var i = 0; i < word.length; i++) {
-answerBox.push("_");
+answerBox.push("*");
 }
-var remainingLetters = answerBox.indexOf("_") 
+var remainingLetters = answerBox.indexOf("*") 
 console.log (answerBox);
 
  //Displays current wins
@@ -59,7 +59,7 @@ function letterInWord(letter) {
 
 //Checks to see if the user won or not
 function checkForWin() {
-    if(answerBox.indexOf("_") === -1){
+    if(answerBox.indexOf("*") === -1){
         wins++;
         alert("You're In!");
         resetGame();
@@ -79,9 +79,9 @@ function resetGame(){
     i = 0;
     //Build guessing box
     for (var i = 0; i < word.length; i++) {
-        answerBox.push("_");
+        answerBox.push("*");
         }
-        var remainingLetters = answerBox.indexOf("_") 
+        var remainingLetters = answerBox.indexOf("*") 
         console.log (answerBox);
     //Resets Letters Guessed
     document.getElementById("guesses").innerHTML = ""

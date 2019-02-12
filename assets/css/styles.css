@@ -1,0 +1,59 @@
+body {
+    color: #009300;
+    background-color: black;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#wholeGame{
+    position: absolute; 
+    right: 600px;
+    top: 200px;
+    border: 3px solid darkgray;
+    padding-right: 40px;
+    background-color: black;
+    font-size: 40px;
+    max-width: 1000px;
+}
+h1 {
+    font-size: 60px;
+    color: #d81e08;
+    position: absolute;
+    right: 810px;
+    top: 25px;
+    background: black;
+    max-width: 300px;
+}
+
+#instructions {
+    font-size: 12px;
+    border: 3px solid darkgray;
+    max-width: 500px;  
+    color: #d81e08; 
+    background-color: black;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+#fake-hack{
+    position: absolute;
+    bottom: 0px;
+    z-index: -100;
+}
+
+#fake-hack2{
+    position: absolute;
+    top: 80px;
+    right: 200px;
+    max-height: 100%;
+    z-index: -80;
+    border: 3px solid darkgray;
+}
+
+#filler{
+    position: absolute;
+    background-color: black;
+    z-index: -90;
+    max-width: 800px;
+    right: 0px;
+}
