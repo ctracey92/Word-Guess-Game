@@ -1,4 +1,3 @@
-
 //varaibles for wins/losses
 var wins = 0;
 
@@ -130,21 +129,3 @@ document.onkeyup = function (e) {
          checkForWin();
     }   
 }
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
