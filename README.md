@@ -7,7 +7,8 @@ Student Contributors
  CSS3, HTML5, Javascript
 
 * About
-A basic word guessing game built using Javascript, HTML, and CSS. A random word is chosen from a list and the player has to guess it. On a win, the game resets and the win is recorded, on a loss the game just resets.
+A basic word guessing game built using Javascript, HTML, and CSS. A random word is chosen from a list and the player has to guess it. On a win, the game resets and the win is recorded, on a loss the game just resets. 
+The words used in the game are a combination of hacking related words, and some of the most common passwords used.
 
 
 * Contributing Guidelines
